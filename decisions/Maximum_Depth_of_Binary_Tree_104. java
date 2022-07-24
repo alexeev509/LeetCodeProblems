@@ -1,0 +1,28 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ //https://leetcode.com/problems/maximum-depth-of-binary-tree
+class Solution {
+    public int maxDepth(TreeNode root) {
+        return maxDepthRecursion (root, 0);
+    }
+    
+    public int maxDepthRecursion(TreeNode current, int count){
+        if(current == null)
+            return count;
+        ++count;
+        return Math.max(maxDepthRecursion(current.left, count),maxDepthRecursion(current.right, count));
+    }
+}
