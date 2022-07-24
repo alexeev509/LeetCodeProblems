@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ 
+ //https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/
+class Solution {
+    public int sumEvenGrandparent(TreeNode root) {
+        return sumEvenGrandparentRecursive(root, 1, 1);
+    }
+    
+    public int sumEvenGrandparentRecursive(TreeNode current, int p, int gp){
+        if(current == null)
+            return 0;
+        return sumEvenGrandparentRecursive(current.left, current.val, p) +
+            sumEvenGrandparentRecursive(current.right, current.val, p) + 
+            (gp % 2 == 0 ? current.val : 0);
+    }
+}
