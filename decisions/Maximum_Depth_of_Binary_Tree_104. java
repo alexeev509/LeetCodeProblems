@@ -26,3 +26,6 @@ class Solution {
         return Math.max(maxDepthRecursion(current.left, count),maxDepthRecursion(current.right, count));
     }
 }
+
+//Iterative decision (not mine)
+//https://leetcode.com/problems/maximum-depth-of-binary-tree/discuss/34195/Two-Java-Iterative-solution-DFS-and-BFS
