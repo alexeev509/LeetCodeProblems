@@ -1,0 +1,40 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ //https://leetcode.com/problems/deepest-leaves-sum/
+class Solution {
+    public int deepestLeavesSum(TreeNode root) {
+        if (root == null)
+            return 0 ;
+        LinkedList <TreeNode> queue = new LinkedList();
+        queue.addLast(root);
+        int sum = 0;
+        while (!queue.isEmpty()){
+            sum = 0;
+            int size = queue.size();
+            while(size-- != 0){
+                TreeNode current = queue.remove();
+                sum += current.val;
+                if(current.right != null){
+                    queue.addLast(current.right);
+                }
+                if(current.left != null){
+                    queue.addLast(current.left);
+                }
+            }
+        }
+        return sum;
+    }
+}
